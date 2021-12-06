@@ -68,6 +68,7 @@ public class ControleTeleSena {
         this.returnValue = 0;
     }
 
+    // Função responsavel pelo controle de venda das telesenas
     public void SellTeleSena() {
         for(int i = 0; i < 20; i++) {
             int nameIndex = (int) (Math.random() * 20);
@@ -76,11 +77,14 @@ public class ControleTeleSena {
 
             pessoas[i] = new Pessoa(nomes[nameIndex], teleSenasOwned);
         }
+        // para teste atribui ao atributo de sorteio os valores que alguma pessoa possui
 //        this.draw = this.pessoas[2].getTeleSenas()[0].getNumbers()[0];
         this.prizePool = (totalSold * TeleSena.getRetailValue()) * 0.8f;
         this.returnValue = (totalSold * TeleSena.getRetailValue()) * 0.2f;
     }
 
+    // Função que fará o sorteio dos números
+    // (Não está gerando nenhuma sequência que alguma pessoa possui)
     public void Draw() {
         for (int i = 0; i < 25; i++) {
             draw[i] = (int) (Math.random() * 60 + 1);
@@ -99,6 +103,7 @@ public class ControleTeleSena {
             }
         }
         int i = 0;
+        // algum problema com o sorteio de novos numeros
         while (this.totalWinners < 1) {
             draw[i] = (int) (Math.random() * 60 + 1);
             for (int k = 0; k < 25; k++) {

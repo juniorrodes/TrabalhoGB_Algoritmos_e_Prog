@@ -47,6 +47,7 @@ public class Pessoa {
         }
     }
 
+    // Checa se os numeros sorteados batem com os numeros das telesenas que a pessoa possui
     public boolean CheckNumbers(int drawNumber[]) {
         this.Sort(drawNumber, 25);
 
@@ -79,7 +80,7 @@ public class Pessoa {
                 '}';
     }
 
-
+    // Função para fazer a ordenação de um vetor
     public static void Sort(int arr[], int n)
     {
         int i, j, temp;
