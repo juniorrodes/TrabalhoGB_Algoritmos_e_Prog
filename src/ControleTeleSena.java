@@ -82,22 +82,37 @@ public class ControleTeleSena {
     }
 
     public void Draw() {
-        while (this.totalWinners < 1) {
-            for (int i = 0; i < 25; i++) {
-                draw[i] = (int) (Math.random() * 60 + 1);
-                for (int k = 0; k < i; k++) {
-                    if (draw[i] == draw[k]) {
-                        i -= 1;
-                        break;
-                    }
+        for (int i = 0; i < 25; i++) {
+            draw[i] = (int) (Math.random() * 60 + 1);
+            for (int k = 0; k < i; k++) {
+                if (draw[i] == draw[k]) {
+                    i -= 1;
+                    break;
                 }
             }
+        }
 
-            for (int i = 0; i < 20; i++) {
-                if(pessoas[i].CheckNumbers(draw)) {
+
+        for (int i = 0; i < 20; i++) {
+            if(pessoas[i].CheckNumbers(draw)) {
+                this.totalWinners += 1;
+            }
+        }
+        int i = 0;
+        while (this.totalWinners < 1) {
+            draw[i] = (int) (Math.random() * 60 + 1);
+            for (int k = 0; k < 25; k++) {
+                if ((draw[i] == draw[k]) && (i != k)) {
+                    draw[i] = (int) (Math.random() * 60 + 1);
+                    k = 0;
+                }
+            }
+            for (int j = 0; j < 20; j++) {
+                if(pessoas[j].CheckNumbers(draw)) {
                     this.totalWinners += 1;
                 }
             }
+            i = i >= 24 ? 0 : i + 1;
         }
 
         this.winnersPrize = this.prizePool / totalWinners;

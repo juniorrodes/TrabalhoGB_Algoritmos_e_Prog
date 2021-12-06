@@ -50,7 +50,6 @@ public class Pessoa {
     public boolean CheckNumbers(int drawNumber[]) {
         this.Sort(drawNumber, 25);
 
-        System.out.println(Arrays.toString(drawNumber) + " Teste");
         for (int l = 0; l < this.teleSenas.length; l++) {
             boolean win1 = true, win2 = true;
             for (int i = 0; i < 2; i++) {
@@ -81,7 +80,7 @@ public class Pessoa {
     }
 
 
-    private void Sort(int arr[], int n)
+    public static void Sort(int arr[], int n)
     {
         int i, j, temp;
         boolean swapped;
